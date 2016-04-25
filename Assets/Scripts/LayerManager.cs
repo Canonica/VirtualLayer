@@ -6,6 +6,7 @@ public class LayerManager : MonoBehaviour {
 
     public SpriteRenderer[] layer1;
     public bool isLayer1;
+
 	// Use this for initialization
 	void Start () {
         isLayer1 = false;
@@ -33,12 +34,12 @@ public class LayerManager : MonoBehaviour {
                 if (isActive)
                 {
                     layer[i].DOFade(0.2f, 1.0f);
-                    isActive = false;
+                    isLayer1 = false;
                 }
                 else
                 {
                     layer[i].DOFade(1f, 1.0f);
-                    isActive = true;
+                    isLayer1 = true;
                 }
             }
         }
