@@ -17,12 +17,20 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, 0.0f);
+        
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.DOMove(new Vector3(1, 0, 0), 1);
+            transform.position += new Vector3(1, 0, 0) * 5f  * Time.deltaTime;
         }
-	}
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            transform.position += new Vector3(-1, 0, 0) * 5f * Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.Z) )
+        {
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 8), ForceMode2D.Impulse);
+            
+        }
+    }
 }

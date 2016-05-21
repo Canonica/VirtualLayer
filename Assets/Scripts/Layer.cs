@@ -22,14 +22,24 @@ public class Layer : MonoBehaviour {
         {
             if (isActive)
             {
-                sprite.DOFade(0.2f, 1.0f);
+                sprite.DOFade(0.2f, 0.3f).OnComplete(() => Disable(sprite));
                 isActive = false;
             }
             else
             {
-                sprite.DOFade(1f, 1.0f);
+                sprite.DOFade(1f, 0.3f).OnComplete(() => Enable(sprite));
                 isActive = true;
             }
         }
+    }
+
+    void Disable(SpriteRenderer sprite)
+    {
+        sprite.GetComponent<Collider2D>().enabled = false;
+    }
+
+    void Enable(SpriteRenderer sprite)
+    {
+        sprite.GetComponent<Collider2D>().enabled = true;
     }
 }

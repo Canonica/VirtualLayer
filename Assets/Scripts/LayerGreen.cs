@@ -3,18 +3,21 @@ using System.Collections;
 using DG.Tweening;
 public class LayerGreen : Layer {
 
-    bool isActive;
-    int color;
-    bool isRepaired;
 	// Use this for initialization
 	void Start () {
-        isActive = false;
-	}
+        color = 1;
+        isActive = true;
+        isRepaired = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            EnableLayer(this.GetComponent<SpriteRenderer>(), isActive);
+            isActive = !isActive;
+        }
+    }
 
     
 }
